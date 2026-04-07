@@ -1,10 +1,10 @@
 {
-  "version": "0.1.11",
-  "tag": "v0.1.11",
-  "releasedAt": "2026-04-07T14:25:15.839Z",
-  "notesUrl": "https://github.com/BalaMZPersonal/gtmship/releases/tag/v0.1.11",
+  "version": "0.1.12",
+  "tag": "v0.1.12",
+  "releasedAt": "2026-04-07T15:15:09.125Z",
+  "notesUrl": "https://github.com/BalaMZPersonal/gtmship/releases/tag/v0.1.12",
   "severity": "info",
-  "message": "GTMShip 0.1.11 is available.",
+  "message": "GTMShip 0.1.12 is available.",
   "minimumSupportedVersion": null,
   "recommendedCommand": "brew update && brew upgrade BalaMZPersonal/tap/gtmship"
 }

@@ -2,28 +2,28 @@ class Gtmship < Formula
   desc "GTMShip local CLI and dashboard runtime"
   homepage "https://github.com/BalaMZPersonal/gtmship"
   license "MIT"
-  version "0.1.12"
+  version "0.1.13"
 
   depends_on "node@20"
   depends_on "postgresql@16"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.12/gtmship-darwin-arm64.tar.gz"
-      sha256 "c81b0c34f62ea4161aa2f40a8147392e73e0888a280d4315314d85ce9fb6e927"
+      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.13/gtmship-darwin-arm64.tar.gz"
+      sha256 "298a1b1292a393fd136bea68192f47b6778191b3234ecaa27f7a887f47bbd3f3"
     else
-      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.12/gtmship-darwin-x64.tar.gz"
-      sha256 "6d2f9bc795b94e0472364ac688461d4cf88b4ea26021ae24a78b88bd04f9c839"
+      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.13/gtmship-darwin-x64.tar.gz"
+      sha256 "7ecc337f29b9f55890610f9ff03c6cf00671a788adeb4dc21533221913638b12"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.12/gtmship-linux-arm64.tar.gz"
-      sha256 "fdec8430ad7f1334ff5798a7531647d5f49bdcfba8fc1c8b961c3b556c8a965a"
+      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.13/gtmship-linux-arm64.tar.gz"
+      sha256 "74f1857ac73cd18935903acbef73410df79b7d4fffae74870d233d21a065c462"
     else
-      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.12/gtmship-linux-x64.tar.gz"
-      sha256 "646ddb9fcb0877e9f1d2a1b466033127f3aa89ba217e0dd9ef805a2c1c08623b"
+      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.13/gtmship-linux-x64.tar.gz"
+      sha256 "8ad652316fd9895b8fd5e6e1110a7286ee361a01334afc98644d0fb74c558636"
     end
   end
 

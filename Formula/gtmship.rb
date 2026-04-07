@@ -2,28 +2,28 @@ class Gtmship < Formula
   desc "GTMShip local CLI and dashboard runtime"
   homepage "https://github.com/BalaMZPersonal/gtmship"
   license "MIT"
-  version "0.1.0"
+  version "0.1.1"
 
   depends_on "node@20"
   depends_on "postgresql@16"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.0/gtmship-darwin-arm64.tar.gz"
-      sha256 "fe29e2429e9e7b512c2d5cc0879c1ab435508fe8d3b812f4179d76dc7c541cfa"
+      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.1/gtmship-darwin-arm64.tar.gz"
+      sha256 "2ca71767992869136284d0aac7dcbd7e97914d2e01adf4ac91ce089834a69122"
     else
-      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.0/gtmship-darwin-x64.tar.gz"
-      sha256 "1206c3dd4b17a06f4a62e8b65b44038876b1cc4b0ee555b7230301913e4fa841"
+      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.1/gtmship-darwin-x64.tar.gz"
+      sha256 "799ae3a322a9eb9fac204a766a0cb1311af246a37af4f9c9434923ac4d802535"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.0/gtmship-linux-arm64.tar.gz"
-      sha256 "f771fd78505a467429b478b0bb2ba85e3b156f35c8022c587878b76683712351"
+      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.1/gtmship-linux-arm64.tar.gz"
+      sha256 "1bcbdc6566301c40c04279374d441d0d216ac6280840587e3a66b8c8d1ae7b6f"
     else
-      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.0/gtmship-linux-x64.tar.gz"
-      sha256 "11dd51e7f22a0d93b7b57f5b318609d820b86a3a763ae2678ff5d10d54b64a27"
+      url "https://github.com/BalaMZPersonal/gtmship/releases/download/v0.1.1/gtmship-linux-x64.tar.gz"
+      sha256 "527701404747e135a9098b2544cddc92737e6866eee53741dec4871c03b1e26e"
     end
   end
 
@@ -33,26 +33,26 @@ class Gtmship < Formula
     (bin/"gtmship").write <<~EOS
       #!/bin/sh
       set -e
-      ROOT_DIR="#{libexec}"
-      export GTMSHIP_INSTALL_ROOT="${ROOT_DIR}"
-      export GTMSHIP_POSTGRES_BIN="${HOMEBREW_PREFIX}/opt/postgresql@16/bin"
-
-      if [ -x "${HOMEBREW_PREFIX}/opt/node@20/bin/node" ]; then
-        exec "${HOMEBREW_PREFIX}/opt/node@20/bin/node" "${ROOT_DIR}/packages/cli/dist/index.js" "$@"
-      fi
-
-      exec node "${ROOT_DIR}/packages/cli/dist/index.js" "$@"
+      exec "#{libexec}/bin/gtmship" "$@"
     EOS
   end
 
   def caveats
     <<~EOS
       Start GTMShip with:
-        gtmship open
+        Desktop: gtmship open
+        Headless Linux / VMs: gtmship start
+        Check status: gtmship status
 
       GTMShip runs the same localhost URLs on macOS and Linux:
         Dashboard: http://localhost:3000
         Auth:      http://localhost:4000
     EOS
+  end
+
+  test do
+    ENV.delete("HOMEBREW_PREFIX")
+    output = shell_output("#{bin}/gtmship --help")
+    assert_match "Usage: gtmship", output
   end
 end
